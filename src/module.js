@@ -1,1 +1,1 @@
-angular.module('up-content-folder', []);
+angular.module('up-content-folder', ['RecursionHelper']);

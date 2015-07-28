@@ -14,6 +14,18 @@ angular.module('up-content-folder')
          */
         fProv.defaultAttrs = {};
 
+        /**
+         * @ngdoc
+         * @propertyOf upContentFolder.provider:Folder
+         * @name upContentFolder.provider:Folder#templateUrl
+         * @description The template url that will be used by the
+         * up-content-folder directive. This allows customization of the layout
+         * of the folder.
+         */
+
+        //TODO less brittle implementation here
+        fProv.templateUrl = '';
+
 
         /**
          * @ngdoc
