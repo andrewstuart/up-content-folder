@@ -1,0 +1,28 @@
+{
+  "name": "up-content-folder",
+  "version": "0.0.0",
+  "authors": [
+    "Andrew Stuart <andrew.stuart2@gmail.com>"
+  ],
+  "description": "Content folder implementation used by uPortal's angular skin.",
+  "main": "dist/up-content-folder.js",
+  "keywords": [
+    "angular",
+    "uportal",
+    "folder"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.3"
+  }
+}
