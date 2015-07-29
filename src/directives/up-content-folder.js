@@ -7,21 +7,30 @@
  */
 
 angular.module('up-content-folder')
-    .directive('upContentFolder', function(RecursionHelper, Folder) {
+    .directive('upContentFolder', function(RecursionHelper, Folder, $compile) {
         'use strict';
 
         return {
-            templateUrl: Folder.templateUrl,
             scope: {
                 def: '='
             },
             restrict: 'E',
             compile: function(tEle) {
+                var tmpl = tEle.html();
+                tEle.html('');
+
                 return RecursionHelper.compile(tEle, function link($scope, iEle, iAttrs) {
+                    //TODO find a better place than the scope to store this.
+                    $scope.$$$tmpl = $scope.$parent.$$$tmpl || tmpl;
+
+                    iEle.html($scope.$$$tmpl);
+                    $compile(iEle.contents())($scope);
+
                     if ( $scope.def && $scope.def.display ) {
-                        Folder.strategy($scope.def.display)($scope, iEle, iAttrs);
                         iEle.attr('up-display', $scope.def.display || Folder.defAttr('display'));
                     }
+
+                    Folder.strategy($scope.def.display)($scope, iEle, iAttrs);
                 });
             }
         };
