@@ -26,10 +26,10 @@ describe('up-content-folder service', function() {
             expect(provider.defaultAttrs).toBeDefined();
         });
 
-        it('should affect the return value of service.defAttr', function() {
-            expect(folder.defAttr('foo')).not.toBeDefined();
+        it('should affect the return value of service.defaultAttr', function() {
+            expect(folder.defaultAttr('foo')).not.toBeDefined();
             provider.defaultAttrs.foo = 'bar';
-            expect(folder.defAttr('foo')).toEqual('bar');
+            expect(folder.defaultAttr('foo')).toEqual('bar');
         });
 
     });

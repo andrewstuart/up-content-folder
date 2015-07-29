@@ -29,10 +29,12 @@ angular.module('up-content-folder')
                     $compile(iEle.contents())($scope);
 
                     if ( $scope.def && $scope.def.display ) {
-                        iEle.attr('up-display', $scope.def.display || Folder.defAttr('display'));
+                        iEle.attr('up-display', $scope.def.display || Folder.defaultAttr('display'));
+                        Folder.strategy($scope.def.display)($scope, iEle, iAttrs);
+                    } else {
+                        //Employ default strategy if no display attribute found
+                        Folder.strategy()($scope, iEle, iAttrs);
                     }
-
-                    Folder.strategy($scope.def.display)($scope, iEle, iAttrs);
                 });
             }
         };
@@ -94,7 +96,7 @@ angular.module('up-content-folder')
             /**
              * @ngdoc
              * @methodOf upContentFolder.service:Folder
-             * @name upContentFolder.service:Folder#defAttr
+             * @name upContentFolder.service:Folder#defaultAttr
              * @param {String} attrName The name of the attribute to look up
              * @returns {String} The attribute value for the given attribute
              * name
@@ -102,7 +104,7 @@ angular.module('up-content-folder')
              * configuration if defined.
              */
 
-            cf.defAttr = function(attrName) {
+            cf.defaultAttr = function(attrName) {
                 return fProv.defaultAttrs[attrName];
             };
 

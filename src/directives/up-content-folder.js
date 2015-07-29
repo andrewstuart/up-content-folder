@@ -27,10 +27,12 @@ angular.module('up-content-folder')
                     $compile(iEle.contents())($scope);
 
                     if ( $scope.def && $scope.def.display ) {
-                        iEle.attr('up-display', $scope.def.display || Folder.defAttr('display'));
+                        iEle.attr('up-display', $scope.def.display || Folder.defaultAttr('display'));
+                        Folder.strategy($scope.def.display)($scope, iEle, iAttrs);
+                    } else {
+                        //Employ default strategy if no display attribute found
+                        Folder.strategy()($scope, iEle, iAttrs);
                     }
-
-                    Folder.strategy($scope.def.display)($scope, iEle, iAttrs);
                 });
             }
         };

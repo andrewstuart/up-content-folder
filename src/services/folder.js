@@ -54,7 +54,7 @@ angular.module('up-content-folder')
             /**
              * @ngdoc
              * @methodOf upContentFolder.service:Folder
-             * @name upContentFolder.service:Folder#defAttr
+             * @name upContentFolder.service:Folder#defaultAttr
              * @param {String} attrName The name of the attribute to look up
              * @returns {String} The attribute value for the given attribute
              * name
@@ -62,7 +62,7 @@ angular.module('up-content-folder')
              * configuration if defined.
              */
 
-            cf.defAttr = function(attrName) {
+            cf.defaultAttr = function(attrName) {
                 return fProv.defaultAttrs[attrName];
             };
 
