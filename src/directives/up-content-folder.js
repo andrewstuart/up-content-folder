@@ -36,12 +36,11 @@ angular.module('up-content-folder')
 
                     if ( $scope.def && $scope.def.display ) {
                         iEle.attr('up-display', $scope.def.display);
-                        Folder.strategy($scope.def.display)($scope, iEle, iAttrs);
                     } else {
-                        //Employ default strategy if no display attribute found
-                        Folder.strategy()($scope, iEle, iAttrs);
                         iEle.attr('up-display', Folder.defaultAttr('display'));
                     }
+
+                    Folder.strategy(iEle.attr('up-display'))($scope, iEle, iAttrs);
                 });
             }
         };
